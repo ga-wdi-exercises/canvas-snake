@@ -17,122 +17,65 @@ class Snake {
   }
   draw(){
     this.body.forEach(({x,y})=>{
-      this.ctx.fillStyle = 'black'
-      //console.log(`x: ${x} y: ${y}`)
-      // TODO 1: Create a rectangle
-      // for each coordinate. Multiply
-      // the x coordinate by the snake's width
-      this.ctx.fillRect(x*this.width, y*this.width, this.width, this.width)
+      console.log(`x: ${x} y: ${y}`)
+      // TODO 1: Create a rectangle for each coordinate.
+      // Multiply the x coordinate by the snake's width
       // TODO 2: Add a white stroke to each cell
-      this.ctx.strokeRect(x*this.width, y*this.width, this.width, this.width)
     })
-    this.ctx.fillRect(this.fruit.x*this.width,this.fruit.y*this.width, this.width, this.width)
+    // TODO 3: Create a rectangle for `this.fruit`
   }
   move(){
-    // TODO 3: Move the snake
+    // TODO 4: Move the snake
     var loop = setInterval( _ => {
       // remove the first element of the snake's body
-      this.body.shift()
-      // repaint the entire canvas by drawing a white square over,
-      this.ctx.fillStyle = 'white'
-      this.ctx.fillRect(0,0,300,150)
-      // store the last element of the snakes body in a variable
-      // push a new element to the snakes body, that is the previous
-      // variable where x is incremented by 1, and y stays 0
+      // repaint the entire canvas by drawing a white square over the whole canvas
       this.grow()
-      // and then call the snake's draw method again
       this.draw()
       this.checkCollision(loop)
     }, 100)
   }
   grow(){
-    // TODO 5: modify the move() method so that the following is true:
     var last = this.body[this.body.length - 1]
     let {x,y} = last
+    // TODO 5: modify the move() method so that the following is true:
     // if direction is right x is incremented
-    if(this.direction == "right"){
-      x++
-    }
     // if direction is left x is decremented
-    if(this.direction == "left"){
-      x--
-    }
     // if direction is up, y is decremented
-    if(this.direction == "up"){
-      y--
-    }
     // if direction is down, y is incremented
-    if(this.direction == "down"){
-      y++
-    }
     this.body.push({x,y})
   }
   checkCollision(loop){
-    // TODO 4: Check for collisions
-    var outside, fruit = false
-    // a collision happens when any of the following are true:
+    // TODO 6: Check for collisions
+    var gameOver = false
     var head = this.body[this.body.length-1]
+    // a collision happens when any of the following are true:
     // the snake's head's x is greater than or equal to 30
-    if(head.x >= 30){
-      outside = true
-    }
     // the snake's head's x is less than or equal to 0
-    if(head.x < 0){
-      outside = true
-    }
     // the snake's head's y is greather than or equal to 15
-    if(head.y >= 15){
-      outside = true
-    }
     // the snake's head's y is less than or equal to 0
-    if(head.y < 0){
-      outside = true
-    }
+    // if the head of the snake touches the fruit, then grow the snake, and show another fruit
 
-    var tail = this.body.slice(0, this.body.length - 1)
-    // if the head of the snake touches the fruit, then add one to the snake
-    if(tail.some(cell => {
-      return cell.x === head.x && cell.y === head.y
-    })){
-      this.gameOver(loop)
-    }
-    if(head.x === this.fruit.x && head.y === this.fruit.y){
-      this.grow()
-      this.showFruit()
-    }
-    if(outside){
+    // Bonus! How can you end the game if the snake touches itself?
+    if(gameOver){
       this.gameOver(loop)
     }
   }
   gameOver(loop){
-    // TODO: tell the user the game is over
-    // if they want to play a game, create a new Snake.
+    // TODO 7: tell the user the game is over
     clearInterval(loop)
     console.log('game Over')
-    //new Snake()
+    // if they want to play a game, create a new Snake.
   }
   getDirection(){
+    // TODO 8: Get the direction
     this.direction = 'right' // the default
     window.addEventListener('keyup', e => {
-      if(e.key === "ArrowRight"){
-        this.direction = 'right'
-      }
-      if(e.key === "ArrowLeft"){
-        this.direction = 'left'
-      }
-      if(e.key === "ArrowUp"){
-        this.direction = 'up'
-      }
-      if(e.key === "ArrowDown"){
-        this.direction = 'down'
-      }
+      // set this.direction based on what key the user enters
     })
   }
   showFruit(){
-    // TODO
-    var x = Math.floor(Math.random() * 30)
-    var y = Math.floor(Math.random() * 15)
-    this.fruit = {x,y}
+    // TODO 9: generate a random x and a random y
+    // assign it to this.fruit
   }
 }
 
