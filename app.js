@@ -75,8 +75,8 @@ class Snake {
   }
   showFruit(){
     this.fruit = {
-      x: Math.floor(Math.random() * 300),
-      y: Math.floor(Math.random() * 150)
+      x: Math.floor(Math.random() * 30),
+      y: Math.floor(Math.random() * 15)
     }
   }
 }
