@@ -74,8 +74,10 @@ class Snake {
     })
   }
   showFruit(){
-    // TODO 9: generate a random x and a random y
-    // assign it to this.fruit
+    this.fruit = {
+      x: Math.floor(Math.random() * 300),
+      y: Math.floor(Math.random() * 150)
+    }
   }
 }
 
