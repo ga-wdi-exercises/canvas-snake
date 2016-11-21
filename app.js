@@ -67,10 +67,20 @@ class Snake {
     // if they want to play a game, create a new Snake.
   }
   getDirection(){
-    // TODO 8: Get the direction
     this.direction = 'right' // the default
     window.addEventListener('keyup', e => {
-      // set this.direction based on what key the user enters
+      if(e.key === "ArrowRight"){
+        this.direction = 'right'
+      }
+      if(e.key === "ArrowLeft"){
+        this.direction = 'left'
+      }
+      if(e.key === "ArrowUp"){
+        this.direction = 'up'
+      }
+      if(e.key === "ArrowDown"){
+        this.direction = 'down'
+      }
     })
   }
   showFruit(){
