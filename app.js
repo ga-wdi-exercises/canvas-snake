@@ -52,7 +52,7 @@ class Snake {
     // the snake's head's x is greater than or equal to 30
     // the snake's head's x is less than or equal to 0
     // the snake's head's y is greather than or equal to 15
-    // the snake's head's y is less than or equal to 0
+    // the snake's head's y is less than 0
     // if the head of the snake touches the fruit, then grow the snake, and show another fruit
 
     // Bonus! How can you end the game if the snake touches itself?
