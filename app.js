@@ -37,7 +37,8 @@ class Snake {
   grow(){
     var last = this.body[this.body.length - 1]
     let {x,y} = last
-    // TODO 5: modify the move() method so that the following is true:
+    // TODO 5: modify the values for x and y, depending on `this.direction`
+    // such that:
     // if direction is right x is incremented
     // if direction is left x is decremented
     // if direction is up, y is decremented
